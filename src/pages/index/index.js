@@ -30,7 +30,8 @@ import TransWorker from 'js/transcode.worker.js'
 import getCommand from 'js/api.js'
 //
 import './index.css'
-import Router from 'vue-router'
+// import Router from 'vue-router'
+import { QrcodeStream } from 'vue-qrcode-reader';
 
 let transWorker = new TransWorker()
 //APPID，APISecret，APIKey在控制台-我的应用-语音听写（流式版）页面获取
@@ -49,8 +50,9 @@ const API_KEY = '1ab45763e88dbb5d847eb6794a7b25a7'
 
 
 var app = new Vue({
-  el: '#app',
-  Router,
+  el: '#openQrcode',
+  components: { QrcodeStream },
+  // Router,
   data () {
       return {
           result: '',//扫码结果信息
@@ -58,11 +60,29 @@ var app = new Vue({
       }
   },
   methods: {
-    openQrcode(){
-      debugger
-      this.$router.push({path:'./qrcodeReader'});
-      console.log("openQrcode");
+    onDecode (result) {
+      alert(result);
+      this.result = result
     },
+    async onInit (promise) {
+      try {
+          await promise
+      } catch (error) {
+          if (error.name === 'NotAllowedError') {
+              this.error = "ERROR: 您需要授予相机访问权限"
+          } else if (error.name === 'NotFoundError') {
+              this.error = "ERROR: 这个设备上没有摄像头"
+          } else if (error.name === 'NotSupportedError') {
+              this.error = "ERROR: 所需的安全上下文(HTTPS、本地主机)"
+          } else if (error.name === 'NotReadableError') {
+              this.error = "ERROR: 相机被占用"
+          } else if (error.name === 'OverconstrainedError') {
+              this.error = "ERROR: 安装摄像头不合适"
+          } else if (error.name === 'StreamApiNotSupportedError') {
+              this.error = "ERROR: 此浏览器不支持流API"
+          }
+      }
+    }
   }
 });
 
