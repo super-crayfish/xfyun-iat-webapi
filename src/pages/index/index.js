@@ -28,7 +28,9 @@ import VConsole from 'vconsole'
 import 'js/jquery.js'
 import TransWorker from 'js/transcode.worker.js'
 import getCommand from 'js/api.js'
+//
 import './index.css'
+import Router from 'vue-router'
 
 let transWorker = new TransWorker()
 //APPID，APISecret，APIKey在控制台-我的应用-语音听写（流式版）页面获取
@@ -36,6 +38,33 @@ const APPID = '42b41c98'
 const API_SECRET = 'NjBkMDNmZWNkZTFkOGZmNmJkMDJjMmI5'
 const API_KEY = '1ab45763e88dbb5d847eb6794a7b25a7'
 
+// new Vue({
+//   el: '#app',
+//   data:{
+//   },
+//   Router,
+//   template: '<App/>'
+// })
+
+
+
+var app = new Vue({
+  el: '#app',
+  Router,
+  data () {
+      return {
+          result: '',//扫码结果信息
+          error: '',//错误信息
+      }
+  },
+  methods: {
+    openQrcode(){
+      debugger
+      this.$router.push({path:'./qrcodeReader'});
+      console.log("openQrcode");
+    },
+  }
+});
 
 
 /**

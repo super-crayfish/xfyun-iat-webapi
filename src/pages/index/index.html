@@ -9,12 +9,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>语音听写（流式版）WebAPI demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
 </head>
 <body>
+  <div id="app">
   <div class="service-item service-item-taste">
     <h2 class="service-item-title">产品体验-语音听写（流式版）WebAPI</h2>
-    <a href="/doc" target="_blank">demo文档说明</a>
-    <a href="/qrcode" target="_blank">二维码</a>
+    <a href="/doc/index.html" target="_blank">demo文档说明</a>
+    <br>
+    <div id = "openQrcode">
+      <button @click="openQrcode()">扫码</button>
+    </div>
+
     <div class="service-item-content service-item-taste-content">
       <div class="taste-content">
         <button class="taste-button ready-button" id="taste_button">开始识别</button>
@@ -45,5 +51,38 @@
     </div>
   <div class="output-text" id="output_text"> </div></div>
   </div>
+</div>
 </body>
 </html>
+
+<script type="module">
+  //import Router from '../../js/router.js'
+</script>
+
+<script>
+  // var app = new Vue({
+  //     //components: { Router },
+  //     el: '#openQrcode',
+  //     //Router,
+  //     data () {
+  //         return {
+  //             result: '',//扫码结果信息
+  //             error: '',//错误信息
+  //         }
+  //     },
+  //     methods: {
+  //       openQrcode(){
+  //         debugger
+  //         this.$router.push({path:'./qrcodeReader'});
+  //         console.log("openQrcode");
+  //       },
+  //     }
+  // });
+</script>
+
+<style scoped>
+  .error {
+      font-weight: bold;
+      color: red;
+  }
+</style>

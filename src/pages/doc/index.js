@@ -56,5 +56,5 @@ function httpRequest(url, data, method, success) {
 }
 
 httpRequest('/data/doc.readme.md', {}, 'get', function(result) {
-  document.getElementById('readme').innerHTML = marked(result)
+  document.getElementById('readme').innerHTML = result
 })
