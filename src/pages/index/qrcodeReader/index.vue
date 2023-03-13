@@ -8,8 +8,8 @@
 
 <script>
 
-  //下载插件
-  //cnpm install --save  vue-qrcode-reader
+//下载插件
+//cnpm install --save  vue-qrcode-reader
 
   //引入
   import { QrcodeStream } from 'vue-qrcode-reader';

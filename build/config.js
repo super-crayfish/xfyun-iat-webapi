@@ -4,6 +4,7 @@
  * @Description: 
  */
 var path = require('path')
+const fs = require('fs')
 
 module.exports = {
   build: {
@@ -31,7 +32,13 @@ module.exports = {
     devtool: 'source-map',
     devServer: {
       port: '8080',
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      open: true,
+      https: {
+        cert: fs.readFileSync(path.join(__dirname, '../src/ssl/cert.crt')),
+        key: fs.readFileSync(path.join(__dirname, '../src/ssl/cert.key'))
+      }
     }
   }
+
 }

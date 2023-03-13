@@ -283,10 +283,23 @@ class IatRecorder {
     //这里输出结果
     let msg = this.outputText
     $('#output_text').text(this.outputText)
-
+    if(!msg){
+      return
+    }
     //调后台接口进行命令识别，并返回命令
+    let data = {
+      // text:msg,
+      commond:msg,
+      commands:[
+        {commandId:"1",contentId:'101',contentPath:'',commandName:'打开菜单大屏管理',commandText:'打开菜单大屏管理',commandMethod:'',},
+        {commandId:"2",contentId:'102',contentPath:'',commandName:'打开菜单内容管理',commandText:'打开菜单内容管理',commandMethod:'',},
+        {commandId:"3",contentId:'103',contentPath:'',commandName:'打开菜单图片管理',commandText:'打开菜单图片管理',commandMethod:'',},
+        {commandId:"4",contentId:'104',contentPath:'',commandName:'下一页',commandText:'下一页',commandMethod:'',},
+        {commandId:"5",contentId:'105',contentPath:'',commandName:'上一页',commandText:'上一页',commandMethod:'',},
+      ]
+    }
 
-    getCommand({"commond":msg}).then(commandData => {
+    getCommand(data).then(commandData => {
       console.log("根据语音分析的命名是："+JSON.stringify(commandData))
       //通过webSocket发送命令到远端，由远端执行命令
       //let commandData = {msg:msg,id:"123"}

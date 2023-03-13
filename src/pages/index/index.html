@@ -17,15 +17,6 @@
     <h2 class="service-item-title">产品体验-语音听写（流式版）WebAPI</h2>
     <a href="/doc/index.html" target="_blank">demo文档说明</a>
     <br>
-    <div id = "openQrcode">
-      <div>
-        <p class="error">{{ error }}</p><!--错误信息-->
-        <p class="decode-result">扫描结果: <b>{{ result }}</b></p><!--扫描结果-->
-        <qrcode-stream @decode="onDecode" @init="onInit" />
-      </div>
-      <br>
-      <button @click="openQrcode()">扫码</button>
-    </div>
 
     <div class="service-item-content service-item-taste-content">
       <div class="taste-content">
